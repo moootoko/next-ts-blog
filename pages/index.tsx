@@ -1,6 +1,14 @@
+import Head from 'next/head';
+
 const IndexPage = () => (
   <>
-    <h1>Hello Next.js {'&'} Typescript!!</h1>
+    <Head>
+      <title>もーとこぶろぐ</title>
+    </Head>
+    <div className="container">
+      <h2 id="title" className="text-center">もーとこぶろぐ</h2>
+      <h5 className="text-center">このサイトはReact、Next.js、TypeScriptを学ぶために開設しました。</h5>
+    </div>
   </>
 );
 
