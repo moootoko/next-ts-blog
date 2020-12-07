@@ -7,6 +7,10 @@ import BaseLayout from '../../components/baselayout';
 import ReactMarkdown from 'react-markdown';
 import * as fs from 'fs';
 
+// 型宣言
+type RenderTable = {
+  children: ReactChild
+}
 type RenderHeading = {
   children: ReactChild,
   level: 1 | 2 | 3 | 4 | 5 | 6
@@ -15,8 +19,9 @@ type Props = {
   contents: string
 }
 
+// ReactMarkdownのrenderers設定
 const renderers = {
-  table: (props): ReactElement => (
+  table: (content: RenderTable): ReactElement => (
     <Table striped responsive size="sm" style={{ width: 'max-content' }}>{props.children}</Table>
   ),
   heading: (content: RenderHeading): ReactElement => {
@@ -39,6 +44,7 @@ const renderers = {
   }
 }
 
+// コンポーネント
 const About = ({ contents }: Props) => (
   <>
     <Head>
@@ -61,6 +67,7 @@ const About = ({ contents }: Props) => (
   </>
 );
 
+// mdファイル読込
 export const getStaticProps: GetStaticProps = async () => {
   const contents = fs.readFileSync('./pages/about/about.md', 'utf8');
   return { props: { contents: contents } };
