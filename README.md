@@ -2,7 +2,7 @@
 
 Next.jsとTypeScriptでウェブサイトを作る練習をしています。
 
-JavaScriptで作った前のサイトは[こちら](https://github.com/moootoko/mtknextblog)。同じ構成ですが、開発言語が変わった他にデザインをBootstrapからMaterializeに変更しました。
+JavaScriptで作った前のサイトは[こちら](https://github.com/moootoko/mtknextblog)。同じ構成ですが、開発言語が変わった他にデザインをBootstrapからUIKitに変更しました。
 
 やっぱりBootstrapは非常に多く採用されているだけあって、一発でバレますからね。
 
