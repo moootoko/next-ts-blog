@@ -8,10 +8,10 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "materialize-css": "^1.0.0",
     "next": "^10.0.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "uikit": "^3.5.10"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
