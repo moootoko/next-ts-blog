@@ -48,7 +48,7 @@ const renderers = {
 const About = ({ contents }: Props) => (
   <>
     <Head>
-      <title>{'NextBlog - About'}</title>
+      <title>{'もーとこぶろぐ - About'}</title>
     </Head>
     <BaseLayout>
       <div className="mt-3 mb-5">
