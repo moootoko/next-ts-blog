@@ -22,7 +22,7 @@ type Props = {
 // ReactMarkdownのrenderers設定
 const renderers = {
   table: (content: RenderTable): ReactElement => (
-    <Table striped responsive size="sm" style={{ width: 'max-content' }}>{props.children}</Table>
+    <Table striped responsive size="sm" style={{ width: 'max-content' }}>{content.children}</Table>
   ),
   heading: (content: RenderHeading): ReactElement => {
     let heading: ReactElement;
