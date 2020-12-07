@@ -1,4 +1,4 @@
-import 'uikit/dist/css/uikit.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import BaseLayout from '../components/baselayout';
 import type { AppProps } from 'next/app';
 
