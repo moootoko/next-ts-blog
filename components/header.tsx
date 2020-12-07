@@ -1,27 +1,29 @@
 import Link from 'next/link';
-import { Nav, Navbar, NavDropdown, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faReact, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 
-type IconInfo = {
+// 型定義
+type SiteInfo = {
   name: string,
   fa: IconDefinition,
   url: string,
   color: string
 };
 
-// ロゴの情報
-const snsInfo: IconInfo[] = [
+// 外部サイト情報
+const externalSites: SiteInfo[] = [
   {name: 'twitter', fa: faTwitter, url: 'https://twitter.com/moootoko_ojisan', color: '#00aced'},
   {name: 'instagram', fa: faInstagram, url: 'https://www.instagram.com/taku_anp', color: '#ff69b4'},
+  {name: 'GitHub', fa: faGithub, url:'https://github.com/moootoko', color: '#333333'}
 ];
 
 // ロゴのスタイル
 const brandLogoStyle = {
   paddingRight: '15px'
 };
-const snsLogoStyle = {
+const externalSiteLogoStyle = {
   padding : '0px 15px'
 };
 
@@ -30,7 +32,9 @@ const Header = () => (
   <Navbar bg="#ffffff" expand="md">
     <div style={brandLogoStyle}>
       <Link href="/" passHref>
-        <Nav.Link><FontAwesomeIcon icon={faReact} size="2x" color="#00bfff" fixedWidth /></Nav.Link>
+        <Nav.Link>
+          <FontAwesomeIcon icon={faReact} size="2x" color="#00bfff" fixedWidth />
+        </Nav.Link>
       </Link>
     </div>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -50,7 +54,7 @@ const Header = () => (
         </Link>
         <NavDropdown className="d-block d-md-none" title="External" id="basic-nav-dropdown">
         {
-          snsInfo.map((obj, idx) => (
+          externalSites.map((obj: SiteInfo, idx: number) => (
             <NavDropdown.Item key={idx} href={obj.url} target="_blank">{obj.name}</NavDropdown.Item>
           ))
         }
@@ -58,22 +62,12 @@ const Header = () => (
       </Nav>
       <Nav className="ml-auto">
       {
-        snsInfo.map((obj, idx) => (
-          <OverlayTrigger
-            key={idx}
-            placement="bottom"
-            overlay={
-              <Tooltip id={`tooltip-${obj.name}`}>
-                <strong>{obj.name}</strong>
-              </Tooltip>
-            }
-          >
-            <Nav.Item className="d-none d-md-block" style={snsLogoStyle}>
-              <a href={obj.url} target="_blank">
-                <FontAwesomeIcon icon={obj.fa} size="2x" color={obj.color} />
-              </a>
-            </Nav.Item>
-          </OverlayTrigger>
+        externalSites.map((obj: SiteInfo, idx: number) => (
+          <Nav.Item key={idx} className="d-none d-md-block" style={externalSiteLogoStyle}>
+            <a href={obj.url} target="_blank">
+              <FontAwesomeIcon icon={obj.fa} size="2x" color={obj.color} />
+            </a>
+          </Nav.Item>
         ))
       }
       </Nav>
