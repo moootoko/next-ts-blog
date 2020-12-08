@@ -39,7 +39,7 @@ const IndexPage = () => (
           </Col>
           <Col sm={4}>
             <span className="d-flex justify-content-center">
-              <img src="/mariadb.svg" alt="MariaDB" className="logo" id="dbLogo" />
+              <img src="/mariadb.svg" alt="MariaDB" className="logo" id="mariadb-Logo" />
             </span>
           </Col>
         </Row>
@@ -50,13 +50,6 @@ const IndexPage = () => (
         max-width: 50%;
         height: auto;
         opacity: 0.3;
-      }
-      #react-logo {
-        animation: 5s linear infinite rotation1;
-      }
-      @keyframes rotation1{
-        0%{ transform:rotate(0);}
-        100%{ transform:rotate(360deg); }
       }
     `}</style>
   </>
