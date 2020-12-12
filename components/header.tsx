@@ -52,6 +52,9 @@ const Header = () => (
         <Link href="/hololive" passHref>
           <Nav.Link>Hololive</Nav.Link>
         </Link>
+        <Link href="/VideoModalTest" passHref>
+          <Nav.Link>Video Modal Test</Nav.Link>
+        </Link>
         <NavDropdown className="d-block d-md-none" title="External" id="basic-nav-dropdown">
         {
           externalSites.map((obj: SiteInfo, idx: number) => (
