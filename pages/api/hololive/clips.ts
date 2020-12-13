@@ -10,7 +10,10 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const clips: Clips[] = clipsData.filter(members => members.memberName === req.query.name);
     if(clips.length === 0) {
-      throw new Error('Cannot find clips dara.');
+      throw new Error('Cannot find clips data.');
+    }
+    else if(clips[0].id.length !== 4) {
+      throw new Error('The number of clips is invalid.');
     }
 
     res.status(200).json(clips[0]);
