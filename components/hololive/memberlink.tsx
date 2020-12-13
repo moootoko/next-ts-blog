@@ -7,15 +7,15 @@ type Props = {
   }
 };
 
-const MemberLink = (props: Props) => (
+const MemberLink = ({memberName}: Props) => (
   <>
-    <Link href="/hololive/[membername]" as={`/hololive/${props.memberName.en}`}>
+    <Link href="/hololive/[membername]" as={`/hololive/${memberName.en}`}>
       <div className="image-text m-3">
         <div className="image1">
-          <img src={`/hololive/${props.memberName.en.toLowerCase()}.png`} className="d-inline-block" />
+          <img src={`/hololive/${memberName.en.toLowerCase()}.jpg`} className="d-inline-block" />
         </div>
         <div className="text1 d-flex justify-content-center">
-          {props.memberName.ja}
+          {memberName.ja}
         </div>
       </div>
     </Link>
