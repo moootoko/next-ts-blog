@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Props = {
   memberName: {
@@ -12,7 +13,7 @@ const Portrait = ({memberName}: Props) => (
     <Link href="/hololive/[membername]" as={`/hololive/${memberName.en}`}>
       <div className="image-text m-3">
         <div className="image1">
-          <img src={`/hololive/${memberName.en.toLowerCase()}.jpg`} className="d-inline-block" />
+          <Image src={`/hololive/${memberName.en.toLowerCase()}.jpg`} width={180} height={180} quality={100} className="d-inline-block" />
         </div>
         <div className="text1 d-flex justify-content-center">
           {memberName.ja}
