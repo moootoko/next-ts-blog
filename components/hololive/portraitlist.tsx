@@ -84,16 +84,16 @@ export const HoloIDMembers = () => (
     <h2 className="text-muted">1期生</h2>
     <hr />
     <Row className="mb-5">
-      <Portrait memberName={{ en: 'MoriCalliope', ja: '森カリオペ' }} />
-      <Portrait memberName={{ en: 'TakanashiKiara', ja: '小鳥遊キアラ' }} />
-      <Portrait memberName={{ en: 'WatsonAmelia', ja: 'ワトソン・アメリア' }} />
+      <Portrait memberName={{ en: 'AiraniIofifteen', ja: 'アイラニ・イオフィフティーン' }} />
+      <Portrait memberName={{ en: 'MoonaHoshinova', ja: 'ムーナ・ホシノヴァ' }} />
+      <Portrait memberName={{ en: 'AyundaRisu', ja: 'アユンダ・リス' }} />
     </Row>
     <h2 className="text-muted">2期生</h2>
     <hr />
     <Row className="mb-5">
-      <Portrait memberName={{ en: 'MoriCalliope', ja: '森カリオペ' }} />
-      <Portrait memberName={{ en: 'TakanashiKiara', ja: '小鳥遊キアラ' }} />
-      <Portrait memberName={{ en: 'WatsonAmelia', ja: 'ワトソン・アメリア' }} />
+      <Portrait memberName={{ en: 'KureijiOllie', ja: 'クレイジー・オリー' }} />
+      <Portrait memberName={{ en: 'AnyaMelfissa', ja: 'アーニャ・メルフィッサ' }} />
+      <Portrait memberName={{ en: 'PavoliaReine', ja: 'パヴォリア・レイネ' }} />
     </Row>
   </>
 );
