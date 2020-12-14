@@ -12,9 +12,7 @@ const Portrait = ({memberName}: Props) => (
   <>
     <Link href="/hololive/[membername]" as={`/hololive/${memberName.en}`}>
       <div className="image-text m-3">
-        <div className="image1">
-          <Image src={`/hololive/${memberName.en.toLowerCase()}.jpg`} width={180} height={180} quality={100} className="d-inline-block" />
-        </div>
+        <Image src={`/hololive/${memberName.en.toLowerCase()}.jpg`} width={180} height={180} quality={100} className="d-inline-block" />
         <div className="text1 d-flex justify-content-center">
           {memberName.ja}
         </div>
