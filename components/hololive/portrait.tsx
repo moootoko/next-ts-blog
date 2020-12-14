@@ -7,7 +7,7 @@ type Props = {
   }
 };
 
-const MemberLink = ({memberName}: Props) => (
+const Portrait = ({memberName}: Props) => (
   <>
     <Link href="/hololive/[membername]" as={`/hololive/${memberName.en}`}>
       <div className="image-text m-3">
@@ -36,4 +36,4 @@ const MemberLink = ({memberName}: Props) => (
   </>
 );
 
-export default MemberLink;
+export default Portrait;

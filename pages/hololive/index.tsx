@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import { Container, Tabs, Tab } from 'react-bootstrap';
 import BaseLayout from '../../components/baselayout';
-import HoloJPMembers from '../../components/hololive/jp-members';
-import HoloENMembers from '../../components/hololive/en-members';
+import { HoloJPMembers, HoloENMembers, HoloIDMembers } from '../../components/hololive/portraitlist';
 
 const Hololive = () => (
   <>
@@ -23,7 +22,7 @@ const Hololive = () => (
             <HoloENMembers />
           </Tab>
           <Tab eventKey="ID" title="ID">
-
+            <HoloIDMembers />
           </Tab>
         </Tabs>
       </Container>
