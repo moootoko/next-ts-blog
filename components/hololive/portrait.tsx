@@ -8,23 +8,21 @@ type Props = {
   }
 };
 
+const [width, height] = [150, 150];
+
 const Portrait = ({memberName}: Props) => (
   <>
     <Link href="/hololive/[membername]" as={`/hololive/${memberName.en}`}>
-      <div className="image-text m-3">
-        <Image src={`/hololive/${memberName.en.toLowerCase()}.jpg`} width={180} height={180} quality={100} className="d-inline-block" />
-        <div className="text1 d-flex justify-content-center">
-          {memberName.ja}
-        </div>
+      <div className="p-3">
+        <Image src={`/hololive/portraits/${memberName.en.toLowerCase()}.jpg`} width={width} height={height} className="d-inline-block" />
+        <div className="text-name d-flex justify-content-center">{memberName.ja}</div>
       </div>
     </Link>
     <style jsx>{`
-      .image-text {
-        position: relative;
-        border-radius: .5rem;
-      }
-      .text1 {
+      .text-name {
         font-size: 0.8rem;
+        line-break: lose;
+        width: ${width}px;
       }
     `}</style>
   </>
