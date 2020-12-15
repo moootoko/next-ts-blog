@@ -12,6 +12,7 @@ const Hololive = () => (
       <div className="mt-3 mb-5">
         <h1 className="d-flex justify-content-center">Hololive</h1>
         <p className="d-flex justify-content-center">自分用のホロライブまとめページです。</p>
+        <p className="d-flex justify-content-center">画像をクリックすると詳細を見られます。</p>
       </div>
       <Container>
         <Tabs className="mb-5" defaultActiveKey="JP" id="group-tab">
