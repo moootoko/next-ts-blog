@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Card } from 'react-bootstrap';
+import { Twemoji } from 'react-emoji-render';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
@@ -18,7 +19,7 @@ export const TwitterButton = ({ id, name }: Props) => (
               <FontAwesomeIcon icon={faTwitter} size="2x" style={{ color: 'rgb(0, 172, 237)' }} />
             </div>
             <div className="p-2">
-              <div className="channel-name">{name}</div>
+              <div className="channel-name"><Twemoji svg text={name} /></div>
               <div className="channel-id">{id}</div>
             </div>
           </div>
