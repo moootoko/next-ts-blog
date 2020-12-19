@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
@@ -95,11 +95,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async (ctx: GetStaticPropsContext) => {
-  const memberContent: MemberContent = holoMember[`${ctx.params.membername}`];
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  const memberContent: MemberContent = holoMember[`${params.membername}`];
   return {
     props: {
-      name: ctx.params.membername,
+      name: params.membername,
       content: memberContent
     }
   }

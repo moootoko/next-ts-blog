@@ -41,8 +41,8 @@ type HoloMember = {
 
 const holoMember: HoloMember = {
   'HoshimachiSuisei': {
-    name: '星街　すいせい',
-    kana: 'ほしまち　すいせい',
+    name: '星街すいせい',
+    kana: 'ほしまちすいせい',
     oshiEmoji: '☄️',
     birthday: '03/22',
     debut: '2018/03/22',
@@ -135,7 +135,7 @@ const holoMember: HoloMember = {
   'TokinoSora': {
     name: 'ときのそら',
     kana: 'ときのそら',
-    oshiEmoji: '🐻💿',
+    oshiEmoji: '🐻',
     birthday: '05/15',
     debut: '2017/09/07',
     youtubeChannel: {
@@ -229,8 +229,8 @@ const holoMember: HoloMember = {
     },
   },
   'AkaiHaato': {
-    name: '赤井　はあと',
-    kana: 'あかい　はあと',
+    name: '赤井はあと',
+    kana: 'あかいはあと',
     oshiEmoji: '❤️',
     birthday: '08/10',
     debut: '2018/06/02',
@@ -239,8 +239,8 @@ const holoMember: HoloMember = {
       name: 'Haachama Ch. 赤井はあと',
     },
     twitter: {
-      id: 'akaihaato❤️',
-      name: '赤井はあと',
+      id: 'akaihaato',
+      name: '赤井はあと❤️',
       tags: {
         '一般': ['赤井はあと', 'はあちゃま', 'HAACHAMA'],
         'ファンアート': 'はあとart',
