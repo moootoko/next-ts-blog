@@ -11,8 +11,9 @@ import holoMember, { MemberContent } from '../../utils/hololive/member-data';
 
 type Props = {
   name: string,
-  content: MemberContent
-}
+  content: MemberContent,
+  errMessage?: string
+};
 
 const basicStatus = (emoji: string, birthday: string, debut: string) => {
   return (
@@ -27,65 +28,101 @@ const basicStatus = (emoji: string, birthday: string, debut: string) => {
 const [imgWidth, imgHeight] = [150, 150];
 const embedUrlPrefix = 'https://www.youtube.com/embed/';
 
-const memberContent = ({ name, content }: Props) => (
-  <>
-    <Head>
-      <title>もーとこぶろぐ - Hololive</title>
-    </Head>
-    <BaseLayout>
-      <Container className="mt-5">
-        <Row className="pb-3 border-bottom">
-          <Col xs={4} sm={3}>
-            <Image src={`/hololive/portraits/${name.toLowerCase()}.jpg`} alt={content.name} width={imgWidth} height={imgHeight} />
-          </Col>
-          <Col xs={8} sm={9}>
-            <h3>{content.name}</h3>
-            {basicStatus(content.oshiEmoji, content.birthday, content.debut)}
-          </Col>
-        </Row>
-        <Row className="py-3 border-bottom">
-          <Col xs={12} sm={6} className="mb-5 mb-sm-0">
-            <h3>YouTube</h3>
-            <YoutubeButton id={content.youtubeChannel.id} name={content.youtubeChannel.name} />
-            <h4 className="mt-3">歌ってみた</h4>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src={embedUrlPrefix + content.song} allowFullScreen />
+const memberContent = ({name, content, errMessage}: Props) => {
+  if(errMessage === undefined) {
+    return (
+      <>
+        <Head>
+          <title>もーとこぶろぐ - Hololive</title>
+        </Head>
+        <BaseLayout>
+          <Container className="mt-5">
+            <Row className="pb-3 border-bottom">
+              <Col xs={4} sm={3}>
+                <Image src={`/hololive/portraits/${name.toLowerCase()}.jpg`} alt={content.name} width={imgWidth} height={imgHeight} />
+              </Col>
+              <Col xs={8} sm={9}>
+                <h3>{content.name}</h3>
+                {basicStatus(content.oshiEmoji, content.birthday, content.debut)}
+              </Col>
+            </Row>
+            <Row className="py-3 border-bottom">
+              <Col xs={12} sm={6} className="mb-5 mb-sm-0">
+                <h3>YouTube</h3>
+                <YoutubeButton id={content.youtubeChannel.id} name={content.youtubeChannel.name} />
+                <h4 className="mt-3">歌ってみた</h4>
+                <div className="embed-responsive embed-responsive-16by9">
+                  <iframe className="embed-responsive-item" src={embedUrlPrefix + content.song} allowFullScreen />
+                </div>
+                <h4 className="mt-3">おすすめ切り抜き</h4>
+                <ModalClips clipsId={content.clips}/>
+              </Col>
+              <Col xs={12} sm={6}>
+                <div>
+                  <h3>Twitter</h3>
+                  <TwitterButton
+                    id={content.twitter.id}
+                    name={content.twitter.name}
+                  />
+                </div>
+                <div className="mt-3">
+                  {Object.keys(content.twitter.tags)
+                    .sort()
+                    .map((tagType: string, idx: number) => {
+                      const tag: string | string[] = content.twitter.tags[tagType];
+                      if(typeof tag === 'string') {
+                        return (
+                          <div className="py-2" key={idx}>
+                            <h6>{tagType}</h6>
+                            <Button variant="outline-primary" href={'https://twitter.com/hashtag/' + content.twitter.tags[tagType]} target="_blank">
+                              {'#' + tag}
+                            </Button>
+                          </div>
+                        )
+                      }
+                      else {
+                        const buttons = tag.map((tagElem: string, idx: number) => (
+                          <Button variant="outline-primary" href={'https://twitter.com/hashtag/' + content.twitter.tags[tagType]} target="_blank" className="mr-2" key={idx}>
+                            {'#' + tagElem}
+                          </Button>
+                        ))
+                        return (
+                          <>
+                            <h6>{tagType}</h6>
+                            {buttons}
+                          </>
+                        )
+                      }
+                    }
+                  )}
+                </div>
+              </Col>
+            </Row>
+            <div className="mt-5 mb-5">
+              <Link href="/hololive">
+                <a className="d-flex justify-content-center">{'⇦ Hololiveトップに戻る'}</a>
+              </Link>
             </div>
-            <h4 className="mt-3">おすすめ切り抜き</h4>
-            <ModalClips clipsId={content.clips}/>
-          </Col>
-          <Col xs={12} sm={6}>
-            <div>
-              <h3>Twitter</h3>
-              <TwitterButton
-                id={content.twitter.id}
-                name={content.twitter.name}
-              />
-            </div>
-            <div className="mt-3">
-              {Object.keys(content.twitter.tags)
-                .sort()
-                .map((key: string, idx: number) => (
-                  <div className="py-2" key={idx}>
-                    <h6>{key}</h6>
-                    <Button variant="outline-primary" href={'https://twitter.com/hashtag/' + content.twitter.tags[key]} target="_blank">
-                      {'#' + content.twitter.tags[key]}
-                    </Button>
-                  </div>
-                )
-              )}
-            </div>
-          </Col>
-        </Row>
-        <div className="mt-5 mb-5">
-          <Link href="/hololive">
-            <a className="d-flex justify-content-center">{'⇦ Hololiveトップに戻る'}</a>
-          </Link>
-        </div>
-      </Container>
-    </BaseLayout>
-  </>
-);
+          </Container>
+        </BaseLayout>
+      </>
+    );
+  }
+  else {
+    return (
+      <>
+        <Head>
+          <title>もーとこぶろぐ - Hololive</title>
+        </Head>
+        <BaseLayout>
+          <Container className="mt-5">
+            {errMessage}
+          </Container>
+        </BaseLayout>
+      </>
+    )
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = Object.keys(holoMember).map(name => `/hololive/${name}`);
@@ -96,6 +133,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
+  if(params === undefined) {
+    return {
+      props: {
+        name: '',
+        content: {},
+        errMessage: `[INVALID PARAMS] params = ${params}`
+      }
+    }
+  }
+
   const memberContent: MemberContent = holoMember[`${params.membername}`];
   return {
     props: {
